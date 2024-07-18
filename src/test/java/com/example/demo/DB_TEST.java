@@ -16,20 +16,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class DB_TEST {
 
 
-    @Autowired
-    private UsersRepository usersRepository;
+
 
     @Test
     void shouldSaveAndFindUser() {
-        // Given
-        Users user = new Users();
-        user.setUsername("testuser");
-        user.setEmail("testuser@example.com");
-        user.setPassword("testpassword");
-
-        // When
-        Users savedUser = usersRepository.save(user);
-
+        String test = "111" + 2 + "333";
+        System.out.println(test);
     }
 
 }

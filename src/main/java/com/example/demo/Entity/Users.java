@@ -1,10 +1,7 @@
 package com.example.demo.Entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -62,6 +59,19 @@ public class Users {
         this.password = password;
     }
 
-
+    public Users(String username,String email,String password){
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    };
+    @Override
+    public String toString() {
+        return  "{" +
+                "id=" + id +
+                ", name='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 // Getters, Setters, Constructors
 }

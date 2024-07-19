@@ -10,6 +10,7 @@ const CreatePostPage = () => {
         try {
             await axios.post('/api/posts', { title, content });
             // 작성 후 목록 페이지로 이동 등의 추가 로직 작성
+
         } catch (error) {
             console.error('Error creating post:', error);
         }

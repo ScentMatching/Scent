@@ -1,26 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const PostListPage = () => {
-    const [Products, setPosts] = useState([]);
+function PostListPage(){
+    const [Product, setProducts] = useState([]);
 
     useEffect(() => {
-        const fetchPosts = async () => {
-            try {
-                const response = await axios.get('/api/posts');
-                setPosts(response.data);
-            } catch (error) {
-                console.error('Error fetching posts:', error);
-            }
-        };
-        fetchPosts();
-    }, []);
+        axios.get('/api/posts')
+            .then(response =>setProducts(response.data))
+            .catch(error => console.log(error))
+        },[]);
 
     return (
         <div>
             <h1>Post List</h1>
             <ul>
-                {Products.map((product) => (
+                {Product.map((product) => (
                     <li key={product.id}>
                         <h2>{product.name}</h2>
                         <p>Price: {product.price}</p>
@@ -31,6 +25,5 @@ const PostListPage = () => {
             </ul>
         </div>
     );
-};
-
+}
 export default PostListPage;

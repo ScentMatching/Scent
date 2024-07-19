@@ -1,21 +1,26 @@
 // src/main/frontend/src/App.js
 
-import React, {useEffect, useState} from 'react';
+import React  from 'react';
 import axios from 'axios';
+import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import CreateProduct from "./Components/CreateProduct";
+import New  from "./Components/new";
+import RouteTest from "./Components/RouteTest";
+import Deeee from "./Components/deeee";
+import CreateProduct1 from "./Components/CreateProduct1";
+
 
 function App() {
-   const [list, setUsers] = useState('')
-
-    useEffect(() => {
-        axios.get('/api')
-        .then(response => setUsers(response.data))
-        .catch(error => console.log(error))
-    }, []);
 
     return (
-        <div>
-            백엔드에서 가져온 데이터입니다 :{list}
-        </div>
+            <Router>
+                <Routes>
+                    <Route path={"/posts"} element={<CreateProduct1/>}/>
+                    <Route path='/new' element={<New/>}/>
+                    <Route path= '/deeee' element={<Deeee/>}/>
+                </Routes>
+                <RouteTest/>
+            </Router>
     );
 }
 

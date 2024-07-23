@@ -5,7 +5,6 @@ class RouteTest extends Component {
     render() {
         return (
             <div>
-                <Link to={'/'}>Home</Link>
                 <br/>
                 <Link to={'/deeee'}>New</Link>
                 <br/>

@@ -1,31 +1,51 @@
 package com.example.demo.Entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Users")
-@Getter
-@Setter
+@Table(name = "users")
 @NoArgsConstructor
 public class Users {
 
+
     @Id
+    @JsonSerialize
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
-    @Column(nullable = false, unique = true)
-    private String username;
+    @Column(name = "nick_name", nullable = false)
+    @JsonSerialize
+    private String nickName;
 
     @Column(nullable = false, unique = true)
+    @JsonSerialize
     private String email;
 
-    @Column(name = "pwd", nullable = false)
+    @Column(name = "password", nullable = false)
+    @JsonSerialize
     private String password;
 
+    @JsonSerialize
+    private String image;
+
+    @JsonSerialize
+    @Column(nullable = false)
+    private String role;
+
+
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public Long getId() {
         return id;
@@ -35,12 +55,12 @@ public class Users {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
     public String getEmail() {
@@ -59,16 +79,20 @@ public class Users {
         this.password = password;
     }
 
-    public Users(String username,String email,String password){
-        this.username = username;
-        this.email = email;
-        this.password = password;
-    };
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+
     @Override
     public String toString() {
         return  "{" +
                 "id=" + id +
-                ", name='" + username + '\'' +
+                ", nick_name='" + nickName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';

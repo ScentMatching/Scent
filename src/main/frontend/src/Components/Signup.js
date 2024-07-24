@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // useHistory 대신 useNavigate를 사용합니다.
 
-const CreatePostPage = () => {
+const CreateUser = () => {
     const [nickName, setNickName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -56,8 +56,9 @@ const CreatePostPage = () => {
                 </label>
             </div>
             <button type="submit">Submit</button>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
     );
 };
 
-export default CreatePostPage;
+export default CreateUser;

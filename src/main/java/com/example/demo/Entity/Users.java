@@ -8,9 +8,12 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
-@NoArgsConstructor
+
 public class Users {
 
+    public Users(){
+        this.role = "USER";
+    }
 
     @Id
     @JsonSerialize

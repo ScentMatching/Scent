@@ -1,8 +1,13 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Repository.ProductRepository;
 import com.example.demo.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.PagedModel;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,12 +20,23 @@ public class PostController {
     @Autowired
     ProductService productService;
 
+    @Autowired
+    ProductRepository  productRepository;
+
     @GetMapping
     public Page<Product> getPosts(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "10") int size){
 
     return productService.getProducts(page,size);
     }
+
+//    @GetMapping
+//    public HttpEntity<PagedModel<Product>> getPeople(Pageable pageable,
+//                                                     PagedResourcesAssembler assembler){
+//
+//            Page<Product> product = productRepository.findAll(pageable);
+//            return ResponseEntity.ok(assembler.toModel(product));
+//    }
 
     @PostMapping
     public ResponseEntity<Void> addPost(@RequestBody Product product){

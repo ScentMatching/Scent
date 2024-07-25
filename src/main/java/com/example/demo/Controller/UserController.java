@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
@@ -21,12 +21,16 @@ public class UserController {
     }
 
 
-//    @PostMapping("/signin")
-//    public String signin(@RequestBody Users user) {
-//        System.out.println(user);
-//        return "success";
-//    }
+    @PostMapping("/signin")
+    public String signin(@RequestBody Users user) {
+        System.out.println(user);
+        return "success";
+    }
 
+    @GetMapping("/signin")
+    public String signin() {
 
+        return "";
+    }
 
 }

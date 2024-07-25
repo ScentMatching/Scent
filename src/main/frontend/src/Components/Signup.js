@@ -55,8 +55,9 @@ const CreateUser = () => {
                     />
                 </label>
             </div>
-            <button type="submit">Submit</button>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <button type="submit">Submit</button>
+
         </form>
     );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,6 +6,19 @@ const Signin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate(); // useNavigate 훅을 사용하여 navigate 함수 생성
+
+    useEffect(() => {
+        const fetchSigninPage = async () => {
+            try {
+                const response = await axios.get('/api/users/signin'); // GET 요청
+                // 페이지를 로드하는 로직 (예: 상태에 저장)
+                console.log(response.data); // 페이지 데이터 확인
+            } catch (error) {
+                console.error('로그인 페이지 로드 실패:', error);
+            }
+        };
+        fetchSigninPage();
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -43,8 +56,8 @@ const Signin = () => {
                     />
                 </label>
             </div>
-            <button type="submit">Submit</button>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <button type="submit">Submit</button>
         </form>
     );
 };

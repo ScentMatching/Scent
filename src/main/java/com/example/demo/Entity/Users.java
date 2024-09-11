@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
-
 public class Users {
 
     public Users(){
@@ -16,54 +15,39 @@ public class Users {
     }
 
     @Id
-    @JsonSerialize
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long user_code;
 
-
-    @Column(name = "nick_name", nullable = false)
-    @JsonSerialize
-    private String nickName;
-
-    @Column(nullable = false, unique = true)
-    @JsonSerialize
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
+    @Column(name = "nickname", nullable = false)
+    private String nickName;
+
     @Column(name = "password", nullable = false)
-    @JsonSerialize
     private String password;
 
-    @JsonSerialize
     private String image;
 
-    @JsonSerialize
     @Column(nullable = false)
     private String role;
 
 
-
-    public String getRole() {
-        return role;
+    @Override
+    public String toString() {
+        return  "{" +
+                ", nick_name='" + nickName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public long getUser_code() {
+        return user_code;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNickName() {
-        return nickName;
-    }
-
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
+    public void setUser_code(long user_code) {
+        this.user_code = user_code;
     }
 
     public String getEmail() {
@@ -72,6 +56,14 @@ public class Users {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
     public String getPassword() {
@@ -90,15 +82,12 @@ public class Users {
         this.image = image;
     }
 
-
-    @Override
-    public String toString() {
-        return  "{" +
-                "id=" + id +
-                ", nick_name='" + nickName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public String getRole() {
+        return role;
     }
-// Getters, Setters, Constructors
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+    // Getters, Setters, Constructors
 }
